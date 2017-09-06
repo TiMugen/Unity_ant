@@ -7,7 +7,6 @@ public class Player_Move_Script :/* MonoBehaviour {*/ NetworkBehaviour {
     private const float MOVE_SPEED = 2.5f;
 
     public Rigidbody2D rb;
-    public Animator anime;
     private Animator moving_animator;
     // -- Movement check ----
     const int CHECK_MOVEMENT_FRAMES_NUM = 5;
@@ -25,7 +24,6 @@ public class Player_Move_Script :/* MonoBehaviour {*/ NetworkBehaviour {
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anime = GetComponent<Animator>();
         moving_animator = GetComponent<Animator>();
         //transform tr_ant_player = instantiate(ant_player) as transform;
         //physics.ignorecollision(tr_ant_player.getcomponent<collider>(), getcomponent<collider>());
