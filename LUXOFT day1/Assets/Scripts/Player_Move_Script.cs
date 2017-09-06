@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.Networking;
 
-public class Player_Move_Script : NetworkBehaviour {
+public class Player_Move_Script :/* MonoBehaviour {*/ NetworkBehaviour {
     private const float ROTATION_SPEED = 130.0f;
     private const float MOVE_SPEED = 2.5f;
 
@@ -14,6 +14,13 @@ public class Player_Move_Script : NetworkBehaviour {
     const float MOVEMENT_THRESHOLD = 0.01f;
     private List<Vector3> locations = new List<Vector3>();
 
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        var camera = GetComponentInChildren<Camera>();
+        camera.enabled = true;
+    }
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,13 +37,9 @@ public class Player_Move_Script : NetworkBehaviour {
         {
             return;
         }
-        gameObject.SetActive(true);
-
 
         float inputX = Input.GetAxis("Horizontal") * Time.deltaTime;
         float inputY = Input.GetAxis("Vertical") * Time.deltaTime;
-
-
 
         // Animation calculations before changing location
         if (locations.Count < CHECK_MOVEMENT_FRAMES_NUM)
@@ -57,7 +60,6 @@ public class Player_Move_Script : NetworkBehaviour {
         {
             rb.velocity = new Vector2();
         }
-
 
         // Animation calculations after change location
         bool isMoved = false;
