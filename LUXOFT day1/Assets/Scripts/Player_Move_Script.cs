@@ -8,17 +8,18 @@ public class Player_Move_Script :/* MonoBehaviour {*/ NetworkBehaviour {
 
     public Rigidbody2D rb;
     public Animator anime;
-    private Animator moving_animator = null;
+    private Animator moving_animator;
     // -- Movement check ----
     const int CHECK_MOVEMENT_FRAMES_NUM = 5;
     const float MOVEMENT_THRESHOLD = 0.01f;
     private List<Vector3> locations = new List<Vector3>();
+    public Camera PlayerCamera;
 
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
-        var camera = GetComponentInChildren<Camera>();
-        camera.enabled = true;
+        var PlayerCamera = GetComponentInChildren<Camera>();
+        PlayerCamera.enabled = true;
     }
     
     private void Start()
