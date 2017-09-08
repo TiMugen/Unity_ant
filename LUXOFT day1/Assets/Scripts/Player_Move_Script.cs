@@ -17,7 +17,7 @@ public class Player_Move_Script :/* MonoBehaviour {*/ NetworkBehaviour {
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
-        var PlayerCamera = GetComponentInChildren<Camera>();
+        PlayerCamera = GetComponentInChildren<Camera>();
         PlayerCamera.enabled = true;
     }
     
